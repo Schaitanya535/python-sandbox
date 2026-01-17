@@ -1,5 +1,3 @@
-import math
-
 from utils.file_reader import read_lines
 
 
@@ -20,6 +18,7 @@ def count_zero_crossings(position, instructions):
             count += (position + amount) // 100
             position = (position + amount) % 100
     return count
+
 
 def count_zero_hits(start_position: int, instructions: list[str]) -> int:
     position = start_position
