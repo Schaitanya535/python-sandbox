@@ -39,7 +39,7 @@ def count_zero_hits(start_position: int, instructions: list[str]) -> int:
 
 
 def main():
-    lines = read_lines("./inputs/day_01_input.txt")
+    lines = read_lines("./inputs/day_01.txt")
     print(count_zero_hits(50, lines))
     print(count_zero_crossings(50, lines))
 
