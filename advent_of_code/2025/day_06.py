@@ -36,13 +36,10 @@ def get_grand_total_reading_columns(grid: list[list[str]]):
 
 
 def main():
-    input_path = (
-        "/Users/chaitanyasura/Projects/python-sandbox/advent_of_code/2025/inputs/"
-    )
-    file_name = "day_06_test.txt"
-    lines = read_lines(input_path + file_name)
+    input_path = "advent_of_code/2025/inputs/day_06_test.txt"
+    lines = read_lines(input_path)
     grid = [parse_to_grid(line) for line in lines]
-    col_grid = read_columns(input_path + file_name, " ")
+    col_grid = read_columns(input_path, " ")
     print(col_grid)
 
     print("Part 1 (): ", get_grand_total(grid))

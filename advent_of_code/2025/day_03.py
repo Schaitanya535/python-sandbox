@@ -38,7 +38,7 @@ def get_cummulative_joltage_of_two(battery_banks: list[str]) -> int:
 
 def main():
     battery_banks = read_lines(
-        "/Users/chaitanyasura/Projects/python-sandbox/advent_of_code/2025/inputs/day_03.txt",
+        "advent_of_code/2025/inputs/day_03.txt",
     )
     print(
         "Part 1 (cummulative joltage of 2):",

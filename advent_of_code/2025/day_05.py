@@ -51,7 +51,7 @@ def get_fresh_ingredients_by_ranges(
 
 def main():
     fresh_ingredient_list_block, ingredients_query_block = read_blocks(
-        "/Users/chaitanyasura/Projects/python-sandbox/advent_of_code/2025/inputs/day_05.txt",
+        "advent_of_code/2025/inputs/day_05.txt",
     )
     parsed_fresh_ingredient_ranges = [
         parse_ranges(range) for range in fresh_ingredient_list_block.split("\n")

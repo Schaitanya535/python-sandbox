@@ -48,7 +48,7 @@ def count_accessable_rolls(rolls_grid: list[list[str]]):
 
 def main():
     rolls_grid = read_grid(
-        "/Users/chaitanyasura/Projects/python-sandbox/advent_of_code/2025/inputs/day_04.txt",
+        "advent_of_code/2025/inputs/day_04.txt",
     )
     print(
         "Part 1 (no. of accessable papers):",

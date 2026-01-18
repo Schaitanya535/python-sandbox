@@ -56,7 +56,7 @@ def get_invalid_sum_part2(ranges: list[tuple[int, int]]) -> int:
 
 def main():
     ranges = read_range_input(
-        "/Users/chaitanyasura/Projects/python-sandbox/advent_of_code/2025/inputs/day_02.txt",
+        "advent_of_code/2025/inputs/day_02.txt",
         True,
     )
     print("Part 1 (doubled pattern):", get_invalid_sum(ranges))
