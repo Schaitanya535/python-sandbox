@@ -1,25 +1,14 @@
+from utils.directions import DIRECTIONS_8
 from utils.file_reader import read_grid
 
 
 def can_remove_roll(rolls_grid: list[list[str]], row: int, col: int):
-    # Define 8 directions: up, down, left, right, and 4 diagonals
-    directions = [
-        (-1, -1),
-        (-1, 0),
-        (-1, 1),  # top-left, top, top-right
-        (0, -1),
-        (0, 1),  # left, right
-        (1, -1),
-        (1, 0),
-        (1, 1),  # bottom-left, bottom, bottom-right
-    ]
-
     adjacent_roll_count = 0
     rows = len(rolls_grid)
     cols = len(rolls_grid[0]) if rows > 0 else 0
 
     # Check all 8 adjacent positions
-    for dr, dc in directions:
+    for dr, dc in DIRECTIONS_8:
         new_row = row + dr
         new_col = col + dc
 
