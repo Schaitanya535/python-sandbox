@@ -3,6 +3,10 @@ def parse_ranges(range_string: str) -> tuple[int, int]:
     return int(start), int(end)
 
 
+def parse_to_grid(line: str, seperator: str | None = None):
+    return [val for val in line.split(seperator) if val]
+
+
 def read_lines(filepath: str) -> list[str]:
     """Read file and return list of lines (stripped)."""
     with open(filepath) as f:
@@ -62,3 +66,49 @@ def read_blocks(filepath: str) -> list[str]:
 
     # Split by two or more consecutive newlines
     return [block.strip() for block in content.split("\n\n") if block.strip()]
+
+
+def read_columns(filepath: str, separator: str | None = None) -> list[list[str]]:
+    """
+    Read file in columns rather than rows.
+
+    Args:
+        filepath: Path to the file to read
+        separator: Optional separator (default: any whitespace)
+
+    Returns:
+        List of columns, where each column is a list of values
+
+    Example:
+        For a file with:
+        1 2 3
+        4 5 6
+        7 8 9
+
+        Returns: [['1', '4', '7'], ['2', '5', '8'], ['3', '6', '9']]
+    """
+    lines = read_lines(filepath)
+    if not lines:
+        return []
+
+    # Split each line by separator
+    rows = [[val for val in line.split(separator) if val] for line in lines]
+
+    # Transpose rows to columns
+    num_cols = len(rows[0])
+    return [[row[i] for row in rows] for i in range(num_cols)]
+
+
+def read_int_columns(filepath: str, separator: str | None = None) -> list[list[int]]:
+    """
+    Read file in columns and convert to integers.
+
+    Args:
+        filepath: Path to the file to read
+        separator: Optional separator (default: any whitespace)
+
+    Returns:
+        List of columns, where each column is a list of integers
+    """
+    columns = read_columns(filepath, separator)
+    return [[int(val) for val in col if val] for col in columns]
