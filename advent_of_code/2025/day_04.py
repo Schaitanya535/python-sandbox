@@ -66,7 +66,7 @@ def main():
         count_accessable_rolls(rolls_grid),
     )
     print(
-        "Part 2 (cummulative joltage of 12):",
+        "Part 2 (no. of accessable papers after removing):",
         count_accessable_rolls_after_removing(rolls_grid),
     )
 
