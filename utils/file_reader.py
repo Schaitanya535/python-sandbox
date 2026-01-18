@@ -1,7 +1,7 @@
-
 def parse_ranges(range_string: str) -> tuple[int, int]:
     start, end = range_string.split("-")
     return int(start), int(end)
+
 
 def read_lines(filepath: str) -> list[str]:
     """Read file and return list of lines (stripped)."""
@@ -41,3 +41,24 @@ def read_range_input(
         else read_lines(filepath)
     )
     return [parse_ranges(range_string) for range_string in range_strings]
+
+
+def read_blocks(filepath: str) -> list[str]:
+    """
+    Read the nth block from a file where blocks are separated by 2+ blank lines.
+
+    Args:
+        filepath: Path to the file to read
+        block_number: Zero-indexed block number to retrieve
+
+    Returns:
+        The content of the nth block as a string
+
+    Raises:
+        IndexError: If block_number is out of range
+    """
+    with open(filepath) as f:
+        content = f.read()
+
+    # Split by two or more consecutive newlines
+    return [block.strip() for block in content.split("\n\n") if block.strip()]
