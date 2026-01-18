@@ -1,14 +1,14 @@
 from utils.file_reader import read_lines
 
 
-def get_cummulative_joltage_of_twelve(battery_banks: list[str]) -> int:
+def get_cummulative_joltage_of_n_batteries(battery_banks: list[str], n: int) -> int:
     total = 0
     for bank in battery_banks:
         curr_voltage = ""
         prev_bat_idx = -1
-        for battery_number in range(1, 13):
+        for battery_number in range(1, n + 1):
             battery, battery_idx = get_max_volts_in_bank(
-                bank, prev_bat_idx + 1, len(bank) - 12 + battery_number
+                bank, prev_bat_idx + 1, len(bank) - n + battery_number
             )
             curr_voltage += battery
             prev_bat_idx = battery_idx
@@ -46,7 +46,11 @@ def main():
     )
     print(
         "Part 2 (cummulative joltage of 12):",
-        get_cummulative_joltage_of_twelve(battery_banks),
+        get_cummulative_joltage_of_n_batteries(battery_banks, 12),
+    )
+    print(
+        "Testing Part 2 (cummulative joltage of 2):",
+        get_cummulative_joltage_of_n_batteries(battery_banks, 2),
     )
 
 
