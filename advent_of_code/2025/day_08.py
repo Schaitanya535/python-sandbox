@@ -73,14 +73,14 @@ def get_product_of_boxes_in_crucuit(
         _distance, box1, box2 = distances[connection_number]
         connect(parent, box1, box2)
 
-    # Count nodes in each component
-    component_sizes: dict[int, int] = {}
-    for node in range(len(box_coordinates)):
-        root = find(parent, node)
-        component_sizes[root] = component_sizes.get(root, 0) + 1
+    # Count boxes in each circuit
+    circuit_sizes: dict[int, int] = {}
+    for box in range(len(box_coordinates)):
+        root = find(parent, box)
+        circuit_sizes[root] = circuit_sizes.get(root, 0) + 1
 
     # Get the top N largest circuits and multiply them
-    sizes = sorted(component_sizes.values(), reverse=True)
+    sizes = sorted(circuit_sizes.values(), reverse=True)
     result = 1
     for i in range(min(top_n, len(sizes))):
         result *= sizes[i]
