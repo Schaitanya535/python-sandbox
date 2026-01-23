@@ -30,22 +30,22 @@ def get_sum_of_min_switch_flips(rows: list[tuple[int, list[int], list[int]]]):
 def parse_line_to_bin_numbers(line: str) -> tuple[int, list[int], list[int]]:
     line_split = line.split(" ")
     pattern = line_split[0]
+    pattern_num = sum(1 << index for index, ch in enumerate(pattern[1:-1]) if ch == "#")
+
     zoltage = line_split[-1]
     parsed_zoltage = [int(zolt) for zolt in zoltage[1:-1].split(",")]
-    switch_patterns = line_split[1:-1]
-    parsed_pattern = pattern[1:-1]
-    pattern_num = sum(
-        1 << index for index, ch in enumerate(parsed_pattern) if ch == "#"
-    )
+
+    switch_groups = line_split[1:-1]
 
     def parse_switchs_to_switch_number(switches: str):
         parsed_switchs = switches[1:-1].split(",")
         return sum(1 << int(switch) for switch in parsed_switchs)
 
-    siwtch_nums = [
-        parse_switchs_to_switch_number(switches) for switches in switch_patterns
+    swtich_group_nums = [
+        parse_switchs_to_switch_number(switches) for switches in switch_groups
     ]
-    return (pattern_num, siwtch_nums, parsed_zoltage)
+
+    return (pattern_num, swtich_group_nums, parsed_zoltage)
 
 
 def main():
@@ -57,7 +57,7 @@ def main():
         get_sum_of_min_switch_flips(parsed_input),
     )
     print(
-        "Part 2 (Get the product of x coordinates of the nodes that complted the full circuit):",
+        "Part 2 (Get Sum of Min Switches with Matching Zoltage):",
     )
 
 
